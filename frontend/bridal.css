@@ -1,0 +1,645 @@
+.bridal {
+    position: relative;
+    min-height: 82vh;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 70px 70px 40px;
+    background:
+        radial-gradient(circle at 78% 58%, rgba(184,135,43,0.28), transparent 32%),
+        linear-gradient(to right, #f8f6f2 0%, #f8f6f2 54%, #ead9b8 100%);
+}
+
+/* soft texture feel */
+.bridal::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background:
+        linear-gradient(to bottom, rgba(255,255,255,0.18), transparent 20%),
+        radial-gradient(circle at 20% 20%, rgba(255,255,255,0.18), transparent 30%);
+    pointer-events: none;
+    z-index: 1;
+}
+
+/* smooth transition into next section */
+.bridal::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 120px;
+    background: linear-gradient(to top, #f8f6f2, transparent);
+    pointer-events: none;
+    z-index: 1;
+}
+
+/* LEFT */
+.bridal-hero-left {
+    position: relative;
+    z-index: 3;
+    max-width: 620px;
+}
+
+.bridal-title {
+    margin: 0 0 28px;
+    font-family: "Playfair Display", serif;
+    font-size: 110px;
+    line-height: 0.9;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #b8872b;
+    text-shadow:
+        0 2px 0 rgba(255,255,255,0.55),
+        0 12px 26px rgba(80, 52, 18, 0.12);
+}
+
+/* button */
+.bride {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 14px 34px;
+    border: 2px solid #b8872b;
+    border-radius: 999px;
+    background: rgba(255,255,255,0.25);
+    backdrop-filter: blur(4px);
+    color: #b8872b;
+    text-decoration: none;
+    font-size: 15px;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+    transition: all 0.3s ease;
+    box-shadow: 0 8px 18px rgba(184,135,43,0.08);
+}
+
+.bride:hover {
+    background: #b8872b;
+    color: #fff;
+    transform: translateY(-2px);
+    box-shadow: 0 12px 22px rgba(184,135,43,0.18);
+}
+
+/* RIGHT */
+.bridal-hero-right {
+    position: relative;
+    z-index: 3;
+    flex: 1;
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+    min-height: 620px;
+}
+
+/* bride image */
+.bridal-img {
+    max-width: 620px;
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+    transform: translateY(8px);
+    filter:
+        drop-shadow(0 28px 55px rgba(0,0,0,0.22))
+        drop-shadow(0 8px 18px rgba(184,135,43,0.12))
+        saturate(1.04)
+        contrast(1.03);
+}
+
+/* optional elegant float */
+.bridal-hero-right .bridal-img {
+    animation: heroFloat 5s ease-in-out infinite;
+}
+
+@keyframes heroFloat {
+    0%, 100% {
+        transform: translateY(8px);
+    }
+    50% {
+        transform: translateY(0);
+    }
+}
+
+/* stronger nav/hero gap harmony */
+.bridal-info-block {
+    margin-top: 8px;
+}
+
+/* TABLET */
+@media (max-width: 1100px) {
+    .bridal {
+        padding: 60px 36px 30px;
+        min-height: 72vh;
+    }
+
+    .bridal-title {
+        font-size: 82px;
+    }
+
+    .bridal-hero-right {
+        min-height: 500px;
+    }
+
+    .bridal-img {
+        max-width: 470px;
+    }
+}
+
+/* MOBILE */
+@media (max-width: 768px) {
+    .bridal {
+        flex-direction: column;
+        text-align: center;
+        padding: 44px 20px 24px;
+        min-height: auto;
+        background:
+            radial-gradient(circle at 50% 72%, rgba(184,135,43,0.22), transparent 32%),
+            linear-gradient(to bottom, #f8f6f2 0%, #f2e4cc 100%);
+    }
+
+    .bridal-hero-left {
+        max-width: 100%;
+    }
+
+    .bridal-title {
+        font-size: 56px;
+        line-height: 1;
+        margin-bottom: 20px;
+    }
+
+    .bridal-hero-right {
+        min-height: auto;
+        justify-content: center;
+        margin-top: 28px;
+    }
+
+    .bridal-img {
+        max-width: 330px;
+        transform: none;
+        animation: none;
+    }
+
+    .bridal::after {
+        height: 70px;
+    }
+}
+.bridal-content{
+   position: absolute;
+  top: 60px;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  
+  flex-direction: column;
+  justify-content: space-between;
+  /* This creates the vertical gap */
+  padding: 12vh 6vw;
+  /* Adds breathing room from the edges */
+  box-sizing: border-box;
+  z-index: 5;
+}
+.bridal-content h1{
+  mix-blend-mode: multiply;
+  /* Or try 'darken' depending on your background brightness */
+
+  align-self: flex-start;
+  /* Pushes 'TIMELESS' to the left */
+  font-family: 'Playfair Display', serif;
+  font-size: 6.5rem;
+  color: #b89232;
+  letter-spacing: 12px;
+  text-transform: uppercase;
+  margin: 0;
+  text-shadow:
+    1px 1px 0px rgba(0, 0, 0, 0.4),
+    /* Sharp top highlight */
+    0px 10px 30px rgba(0, 0, 0, 0.3);
+  /* Deep atmospheric shadow */
+
+  /* Makes the white text look more 'luminous' */
+  filter: drop-shadow(0 0 2px rgba(0, 0, 0, 0.1));
+}
+.bride{
+   display: inline-block;
+  padding: 12px 30px;
+  background: transparent;
+  color: #b89232;
+  border: 2px solid #b89232;
+  text-decoration: none;
+  border-radius: 40px;
+  font-size: 14px;
+  letter-spacing: 1px;
+  transition: all 0.3s ease;
+}
+.bride:hover{
+   background: #b89232;
+  color: white;
+ 
+  
+}
+
+
+
+.bridal-section {
+  padding: 80px 40px;
+    border-top: 1px solid #e6dccf;
+    border-bottom: 1px solid #e6dccf;
+  background: linear-gradient(180deg, #f4e7d3, #e9d5b5);
+
+}
+
+.bridal-section h1 {
+  font-size: 44px;
+  letter-spacing: 2px;
+  font-weight: 700;
+  color: #9e7e2a;
+  margin-bottom: 60px;
+}
+
+.bridal-section .overlayy span {
+  color: #f3e7c8;
+}
+
+.bridal-section .overlayy h3 {
+  color: #fff;
+}
+.bridal-cards {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  flex-wrap: wrap;
+}
+
+/* Card */
+.bridal-card {
+
+  border-radius: 20px;
+  position: relative;
+  width: 300px;
+  height: 450px;
+  overflow: hidden;
+  transition: all 0.35s ease;
+  border-radius: 12px;
+  /* Arch Shape */
+
+
+  border: 6px solid transparent;
+  background-image:
+    linear-gradient(#f6f1eb, #f6f1eb),
+    /* inner background */
+    linear-gradient(45deg, #736305, #684f04, #a8730f, #6f600b);
+  /* gold border */
+  background-origin: border-box;
+  background-clip: padding-box, border-box;
+
+  box-shadow:
+    0 10px 30px rgba(0, 0, 0, 0.15),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.2);
+}
+
+
+/* Image */
+.bridal-card img {
+  border-radius: 1px;
+
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Gradient overlay */
+.bridal-card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 12px;
+  border: 1px solid transparent;
+  transition: all 0.35s ease;
+}
+
+.bridal-card:hover::after {
+  border-color: rgba(201, 146, 28, 0.4);
+}
+
+/* Hover effect */
+.bridal-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.08);
+}
+
+
+/* SECTION */
+.collection-best {
+  padding: 60px 40px 80px;
+  background: #f8f6f2;
+  text-align: center;
+}
+
+.collection-best h1 {
+  font-family: "Playfair Display", serif;
+  font-size: 54px;
+  font-weight: 600;
+  color: #b8872b;
+  margin: 0 0 45px;
+}
+
+.red-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 32px;
+}
+
+.red-card {
+
+  border: 1px solid #b36f16;
+  border-radius: 20px;
+  overflow: hidden;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  box-shadow: 0 10px 24px rgba(78, 54, 24, 0.08);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.red-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 18px 34px rgba(78, 54, 24, 0.14);
+}
+
+.red-image {
+  position: relative;
+  
+  overflow: hidden;
+}
+
+.red-image img {
+    width: 100%;
+  height: 320px;
+  object-fit: cover;
+  object-position: top;
+  border-radius: 20px 20px 0 0; /* only top corners */
+  transition: transform 0.35s ease;
+}
+
+.red-card:hover .collection-image img {
+  transform: scale(1.03);
+}
+
+.wishlist {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  width: 38px;
+  height: 38px;
+  border: none;
+  border-radius: 50%;
+  background: #fff;
+  color: #5b3a1a;
+  font-size: 16px;
+  cursor: pointer;
+  box-shadow: 0 5px 12px rgba(0, 0, 0, 0.12);
+  z-index: 2;
+}
+
+.red-info {
+  padding: 16px 18px 20px;
+  text-align: center;
+}
+
+.red-info h3 {
+  font-family: "Playfair Display", serif;
+  font-size: 17px;
+  font-weight: 600;
+  color: #3a2d1f;
+  margin: 0 0 10px;
+  line-height: 1.4;
+}
+
+.price {
+  font-size: 20px;
+  font-weight: 700;
+  color: #b8872b;
+  margin: 0 0 16px;
+}
+
+.buttons {
+  display: flex;
+  gap: 10px;
+}
+
+.cart,
+.buy {
+  flex: 1;
+  height: 42px;
+  border: none;
+  border-radius: 12px;
+  font-size: 15px;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+.cart {
+  background: #000;
+  color: #fff;
+}
+
+.cart:hover {
+  background: #1d1d1d;
+}
+
+.buy {
+  background: #d1a246;
+  color: #fff;
+}
+
+.buy:hover {
+  background: #b9882d;
+}
+
+@media (max-width: 1200px) {
+  .red-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 900px) {
+  .collection-best {
+    padding: 50px 24px 70px;
+  }
+
+  .collection-best h1 {
+    font-size: 42px;
+  }
+
+  .red-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+  }
+}
+
+@media (max-width: 600px) {
+  .collection-best {
+    padding: 40px 16px 60px;
+  }
+
+  .collection-best h1 {
+    font-size: 32px;
+    margin-bottom: 30px;
+  }
+
+  .red-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .red-image img {
+    height: 280px;
+  }
+
+  .red-info {
+    padding: 14px 14px 16px;
+  }
+
+  .red-info h3 {
+    font-size: 16px;
+  }
+
+  .price {
+    font-size: 18px;
+  }
+
+  .buttons {
+    flex-direction: column;
+  }
+
+  .cart,
+  .buy {
+    height: 40px;
+    font-size: 14px;
+  }
+}
+
+.bridal-journey {
+    
+    padding: 110px ;
+   
+}
+.journey-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 30px;
+}
+
+/* CARD */
+.journey-step {
+   background: linear-gradient(180deg, #fff8f3, #f3e7d8);
+    padding: 40px;
+    border-radius: 18px;
+    border: 1px solid #e6dccf;
+    transition: 0.4s;
+}
+
+/* HOVER */
+.journey-step:hover {
+    transform: translateY(-8px);
+    border-color: #c89b3c;
+    box-shadow: 0 15px 30px rgba(0,0,0,0.08);
+}
+
+/* NUMBER */
+.journey-step span {
+    font-size: 36px;
+    color: #c89b3c;
+    font-weight: 600;
+    display: block;
+    margin-bottom: 15px;
+}
+
+/* TITLE */
+.journey-step h3 {
+    color: #222;
+    margin-bottom: 12px;
+}
+
+/* TEXT */
+.journey-step p {
+    color: #666;
+    line-height: 1.6;
+}
+.bridal-guide {
+    padding: 110px;
+    background:  #f8f6f2;;
+}
+
+.guide-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 40px;
+}
+
+.guide-item {
+    padding: 35px;
+    background: linear-gradient(180deg, #fff8f3, #f3e7d8);
+    border-radius: 16px;
+    border: 1px solid rgba(255,255,255,0.06);
+    transition: 0.4s;
+}
+
+.guide-item:hover {
+    transform: translateY(-6px);
+    border-color: #c89b3c;
+}
+
+.guide-item h3 {
+    color: #c89b3c;
+    margin-bottom: 12px;
+}
+
+.guide-item p {
+    color: #aaa;
+    line-height: 1.6;
+}
+
+.craftsmanship {
+    padding: 120px 20px;
+    background: #ddcba7;
+    text-align: center;
+}
+
+.craftsmanship-container {
+    max-width: 800px;
+    margin: auto;
+}
+
+.craftsmanship h2 {
+    font-size: 40px;
+    margin-bottom: 20px;
+    font-weight: 600;
+}
+
+.craftsmanship p {
+    font-size: 18px;
+    line-height: 1.7;
+    margin-bottom: 35px;
+    color: #555;
+}
+
+.craft-btn {
+    display: inline-block;
+    padding: 14px 34px;
+    background: #c89b3c;
+    color: white;
+    text-decoration: none;
+    border-radius: 40px;
+    font-size: 16px;
+    transition: 0.3s;
+}
+
+.craft-btn:hover {
+    background:#c89b3c; 
+}
+
