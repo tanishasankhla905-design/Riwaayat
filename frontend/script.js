@@ -69,3 +69,39 @@ function prevSlide() {
   productIndex = (productIndex - 1 + productSlides.length) % productSlides.length;
   showProductSlide(productIndex);
 }
+
+document.addEventListener("DOMContentLoaded", function () {
+    document.querySelectorAll(".wishlist").forEach(function(button) {
+        button.addEventListener("click", function () {
+            let productId = this.getAttribute("data-id");
+            let btn = this;
+
+            fetch("add-wishlist.php", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/x-www-form-urlencoded"
+                },
+                body: "id=" + encodeURIComponent(productId)
+            })
+            .then(response => response.text())
+            .then(data => {
+                if (data.trim() === "login") {
+                    window.location.href = "login.php";
+                } 
+                else if (data.trim() === "added") {
+                    btn.innerHTML = "♥";
+                    btn.classList.add("active");
+                } 
+                else if (data.trim() === "removed") {
+                    btn.innerHTML = "♡";
+                    btn.classList.remove("active");
+                } 
+                else {
+                    console.log(data);
+                }
+            });
+        });
+    });
+});
+
+

@@ -100,8 +100,7 @@ $testresult = mysqli_query($conn, "SELECT * FROM testimonials");
         <div class="product-card">
             
             <!-- Wishlist -->
-            <button class="wishlist">♡</button>
-
+            <button type="button" class="wishlist" data-id="<?php echo $product['id']; ?>">♡</button>
             <!-- Image -->
             <div class="product-image">
                 <img src="../images/<?php echo $product['image']; ?>">

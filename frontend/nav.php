@@ -1,4 +1,9 @@
+
+
 <header class="riwaayat-header">
+
+
+
    <div class="top-barr">
     
     <div class="left-group">
@@ -13,12 +18,20 @@
         </div>
     </div>
 
-    <div class="search-wrapper">
-        <div class="search-bar">
-            <i class="fa-solid fa-magnifying-glass"></i>
-            <input type="text" placeholder="Search for saree, bridal, lehariya...">
-        </div>
-    </div>
+<div class="search-wrapper">
+    <form class="search-bar" action="collection.php" method="GET">
+        <button type="submit" class="search-btn">
+           
+        </button>
+
+        <input 
+            type="text" 
+            name="search"
+            placeholder="Search for saree, bridal, lehariya..."
+            value="<?php echo isset($_GET['search']) ? htmlspecialchars($_GET['search']) : ''; ?>"
+        >
+    </form>
+</div>
 
     <div class="nav-icons">
         <a href="login.php"><i class="fa-regular fa-user"></i> Login</a>
