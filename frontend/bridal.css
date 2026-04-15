@@ -1,607 +1,1427 @@
-.bridal {
+.bridal-hero-section {
+    width: 100%;
+    padding: 35px 7%;
+    background: linear-gradient(135deg, #f8f1e8, #f4e7d8, #f7efe6);
     position: relative;
-    min-height: 82vh;
     overflow: hidden;
+}
+
+.bridal-hero-inner {
+    width: 100%;
+    max-width: 1400px;
+    margin: 0 auto;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 70px 70px 40px;
-    background:
-        radial-gradient(circle at 78% 58%, rgba(184,135,43,0.28), transparent 32%),
-        linear-gradient(to right, #f8f6f2 0%, #f8f6f2 54%, #ead9b8 100%);
+    gap: 25px;
 }
 
-/* soft texture feel */
-.bridal::before {
-    content: "";
+.bridal-hero-content {
+    width: 42%;
+    padding-left: 0;
+}
+
+.bridal-small-title {
+    font-size: 12px;
+    letter-spacing: 4px;
+    color: #b89232;
+    margin-bottom: 12px;
+    font-weight: 600;
+}
+
+.bridal-hero-content h1 {
+    font-size: 58px;
+    line-height: 1.05;
+    color: #4e2e24;
+    font-family: "Playfair Display", serif;
+    font-weight: 500;
+    margin-bottom: 18px;
+}
+
+.bridal-desc {
+    font-size: 16px;
+    line-height: 1.7;
+    color: #6c5145;
+    max-width: 500px;
+    margin-bottom: 22px;
+}
+
+.bridal-hero-btn {
+    display: inline-block;
+    padding: 14px 28px;
+    background: linear-gradient(135deg, #7b3f33, #8f5242);
+    color: #fff;
+    text-decoration: none;
+    border-radius: 10px;
+    font-size: 16px;
+    font-weight: 500;
+    transition: 0.3s ease;
+}
+
+.bridal-hero-btn:hover {
+    background: linear-gradient(135deg, #673227, #7d4637);
+    transform: translateY(-2px);
+}
+
+.bridal-hero-gallery {
+    width: 58%;
+    height: 430px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.hero-card {
+    position: absolute;
+    display: block;
+    background: #fff8f1;
+    border: 2px solid #e6d1bb;
+    box-shadow: 0 10px 30px rgba(93, 61, 43, 0.12);
+    overflow: hidden;
+    text-decoration: none;
+    transition: 0.35s ease;
+}
+
+.hero-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+/* center big image */
+.hero-card-center {
+    width: 300px;
+    height: 430px;
+    z-index: 3;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+/* left tilted image */
+.hero-card-left {
+    width: 190px;
+    height: 300px;
+    z-index: 1;
+    left: 70px;
+    top: 95px;
+    transform: rotate(-10deg);
+}
+
+/* right tilted image */
+.hero-card-right {
+    width: 190px;
+    height: 300px;
+    z-index: 1;
+    right: 70px;
+    top: 95px;
+    transform: rotate(8deg);
+}
+
+.hero-card:hover {
+    box-shadow: 0 18px 40px rgba(93, 61, 43, 0.22);
+    z-index: 5;
+}
+
+.hero-card-left:hover {
+    transform: rotate(-10deg) scale(1.03);
+}
+
+.hero-card-right:hover {
+    transform: rotate(8deg) scale(1.03);
+}
+
+.hero-card-center:hover {
+    transform: translateX(-50%) scale(1.03);
+}
+
+.bridal-hero-nav {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    margin-top: 18px;
+}
+
+.bridal-hero-nav span {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #c9b39c;
+    display: inline-block;
+}
+
+.bridal-hero-nav span.active {
+    background: #8a5a42;
+}
+
+.no-hero-products {
+    font-size: 18px;
+    color: #7a5b4b;
+    text-align: center;
+    width: 100%;
+}
+
+/* responsive */
+@media (max-width: 1100px) {
+    .bridal-hero-section {
+        padding: 30px 5%;
+    }
+
+    .bridal-hero-inner {
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .bridal-hero-content,
+    .bridal-hero-gallery {
+        width: 100%;
+    }
+
+    .bridal-hero-content {
+        text-align: center;
+    }
+
+    .bridal-desc {
+        margin: 0 auto 22px;
+    }
+
+    .bridal-hero-content h1 {
+        font-size: 48px;
+    }
+
+    .bridal-hero-gallery {
+        height: 420px;
+    }
+
+    .hero-card-center {
+        width: 280px;
+        height: 400px;
+    }
+
+    .hero-card-left,
+    .hero-card-right {
+        width: 180px;
+        height: 280px;
+        top: 95px;
+    }
+
+    .hero-card-left {
+        left: 90px;
+    }
+
+    .hero-card-right {
+        right: 90px;
+    }
+}
+
+@media (max-width: 768px) {
+    .bridal-hero-section {
+        padding: 25px 18px;
+    }
+
+    .bridal-small-title {
+        font-size: 11px;
+        letter-spacing: 3px;
+    }
+
+    .bridal-hero-content h1 {
+        font-size: 38px;
+    }
+
+    .bridal-desc {
+        font-size: 15px;
+        line-height: 1.6;
+    }
+
+    .bridal-hero-btn {
+        padding: 12px 22px;
+        font-size: 15px;
+    }
+
+    .bridal-hero-gallery {
+        height: 320px;
+    }
+
+    .hero-card-center {
+        width: 200px;
+        height: 300px;
+        top: 0;
+    }
+
+    .hero-card-left,
+    .hero-card-right {
+        width: 120px;
+        height: 200px;
+        top: 70px;
+    }
+
+    .hero-card-left {
+        left: 15px;
+    }
+
+    .hero-card-right {
+        right: 15px;
+    }
+}
+
+@media (max-width: 480px) {
+    .bridal-hero-content h1 {
+        font-size: 32px;
+    }
+
+    .bridal-desc {
+        font-size: 14px;
+    }
+
+    .bridal-hero-gallery {
+        height: 260px;
+    }
+
+    .hero-card-center {
+        width: 160px;
+        height: 240px;
+    }
+
+    .hero-card-left,
+    .hero-card-right {
+        width: 95px;
+        height: 150px;
+        top: 60px;
+    }
+
+    .hero-card-left {
+        left: 5px;
+    }
+
+    .hero-card-right {
+        right: 5px;
+    }
+}
+
+.occasion-section {
+    width: 100%;
+    padding: 60px 6%;
+    background: #fff;
+}
+
+.occasion-heading {
+    margin-bottom: 30px;
+}
+
+.occasion-heading h2 {
+    font-size: 42px;
+    color: #4e2e24;
+    font-family: "Playfair Display", serif;
+    margin-bottom: 8px;
+}
+
+.occasion-heading p {
+    font-size: 16px;
+    color: #7a6153;
+}
+
+.occasion-grid {
+    display: grid;
+    grid-template-columns: 1.2fr 1.2fr 1.2fr;
+    grid-auto-rows: 250px;
+    gap: 22px;
+}
+
+.occasion-card {
+    position: relative;
+    display: block;
+    overflow: hidden;
+    border-radius: 26px;
+    text-decoration: none;
+    background: #f6f1eb;
+}
+
+.occasion-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: 0.4s ease;
+}
+
+.occasion-overlay {
     position: absolute;
     inset: 0;
-    background:
-        linear-gradient(to bottom, rgba(255,255,255,0.18), transparent 20%),
-        radial-gradient(circle at 20% 20%, rgba(255,255,255,0.18), transparent 30%);
-    pointer-events: none;
-    z-index: 1;
+    background: linear-gradient(to top, rgba(0,0,0,0.38), rgba(0,0,0,0.05), transparent);
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    padding: 20px;
 }
 
-/* smooth transition into next section */
-.bridal::after {
-    content: "";
-    position: absolute;
-    left: 0;
-    bottom: 0;
-    width: 100%;
-    height: 120px;
-    background: linear-gradient(to top, #f8f6f2, transparent);
-    pointer-events: none;
-    z-index: 1;
-}
-
-/* LEFT */
-.bridal-hero-left {
-    position: relative;
-    z-index: 3;
-    max-width: 620px;
-}
-
-.bridal-title {
-    margin: 0 0 28px;
+.occasion-overlay h3 {
+    color: #fff;
+    font-size: 32px;
     font-family: "Playfair Display", serif;
-    font-size: 110px;
-    line-height: 0.9;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    color: #b8872b;
-    text-shadow:
-        0 2px 0 rgba(255,255,255,0.55),
-        0 12px 26px rgba(80, 52, 18, 0.12);
+    font-weight: 500;
+    margin: 0;
+    text-align: center;
+}
+
+.occasion-card:hover img {
+    transform: scale(1.06);
+}
+
+.large-card {
+    grid-row: span 2;
+}
+
+.medium-card {
+    grid-row: span 1;
+}
+
+.small-card {
+    grid-row: span 1;
+}
+
+@media (max-width: 1100px) {
+    .occasion-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .large-card {
+        grid-row: span 1;
+    }
+
+    .occasion-card {
+        height: 280px;
+    }
+}
+
+@media (max-width: 768px) {
+    .occasion-section {
+        padding: 40px 18px;
+    }
+
+    .occasion-heading h2 {
+        font-size: 32px;
+    }
+
+    .occasion-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .occasion-card {
+        height: 260px;
+    }
+
+    .occasion-overlay h3 {
+        font-size: 26px;
+    }
 }
 
 /* button */
 .bride {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    padding: 14px 34px;
-    border: 2px solid #b8872b;
-    border-radius: 999px;
-    background: rgba(255,255,255,0.25);
-    backdrop-filter: blur(4px);
-    color: #b8872b;
+    display: inline-block;
+    padding: 12px 30px;
+    background: transparent;
+    color: #b89232;
+    border: 2px solid #b89232;
     text-decoration: none;
-    font-size: 15px;
-    font-weight: 500;
-    letter-spacing: 0.5px;
+    border-radius: 40px;
+    font-size: 14px;
+    letter-spacing: 1px;
     transition: all 0.3s ease;
-    box-shadow: 0 8px 18px rgba(184,135,43,0.08);
 }
 
 .bride:hover {
-    background: #b8872b;
-    color: #fff;
-    transform: translateY(-2px);
-    box-shadow: 0 12px 22px rgba(184,135,43,0.18);
+    background: #b89232;
+    color: white;
 }
-
-/* RIGHT */
-.bridal-hero-right {
-    position: relative;
-    z-index: 3;
-    flex: 1;
-    display: flex;
-    justify-content: flex-end;
-    align-items: flex-end;
-    min-height: 620px;
-}
-
-/* bride image */
-.bridal-img {
-    max-width: 620px;
-    width: 100%;
-    height: auto;
-    object-fit: contain;
-    transform: translateY(8px);
-    filter:
-        drop-shadow(0 28px 55px rgba(0,0,0,0.22))
-        drop-shadow(0 8px 18px rgba(184,135,43,0.12))
-        saturate(1.04)
-        contrast(1.03);
-}
-
-/* optional elegant float */
-.bridal-hero-right .bridal-img {
-    animation: heroFloat 5s ease-in-out infinite;
-}
-
-@keyframes heroFloat {
-    0%, 100% {
-        transform: translateY(8px);
-    }
-    50% {
-        transform: translateY(0);
-    }
-}
-
-/* stronger nav/hero gap harmony */
-.bridal-info-block {
-    margin-top: 8px;
-}
-
-/* TABLET */
-@media (max-width: 1100px) {
-    .bridal {
-        padding: 60px 36px 30px;
-        min-height: 72vh;
-    }
-
-    .bridal-title {
-        font-size: 82px;
-    }
-
-    .bridal-hero-right {
-        min-height: 500px;
-    }
-
-    .bridal-img {
-        max-width: 470px;
-    }
-}
-
-/* MOBILE */
-@media (max-width: 768px) {
-    .bridal {
-        flex-direction: column;
-        text-align: center;
-        padding: 44px 20px 24px;
-        min-height: auto;
-        background:
-            radial-gradient(circle at 50% 72%, rgba(184,135,43,0.22), transparent 32%),
-            linear-gradient(to bottom, #f8f6f2 0%, #f2e4cc 100%);
-    }
-
-    .bridal-hero-left {
-        max-width: 100%;
-    }
-
-    .bridal-title {
-        font-size: 56px;
-        line-height: 1;
-        margin-bottom: 20px;
-    }
-
-    .bridal-hero-right {
-        min-height: auto;
-        justify-content: center;
-        margin-top: 28px;
-    }
-
-    .bridal-img {
-        max-width: 330px;
-        transform: none;
-        animation: none;
-    }
-
-    .bridal::after {
-        height: 70px;
-    }
-}
-.bridal-content{
-   position: absolute;
-  top: 60px;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  display: flex;
-  
-  flex-direction: column;
-  justify-content: space-between;
-  /* This creates the vertical gap */
-  padding: 12vh 6vw;
-  /* Adds breathing room from the edges */
-  box-sizing: border-box;
-  z-index: 5;
-}
-.bridal-content h1{
-  mix-blend-mode: multiply;
-  /* Or try 'darken' depending on your background brightness */
-
-  align-self: flex-start;
-  /* Pushes 'TIMELESS' to the left */
-  font-family: 'Playfair Display', serif;
-  font-size: 6.5rem;
-  color: #b89232;
-  letter-spacing: 12px;
-  text-transform: uppercase;
-  margin: 0;
-  text-shadow:
-    1px 1px 0px rgba(0, 0, 0, 0.4),
-    /* Sharp top highlight */
-    0px 10px 30px rgba(0, 0, 0, 0.3);
-  /* Deep atmospheric shadow */
-
-  /* Makes the white text look more 'luminous' */
-  filter: drop-shadow(0 0 2px rgba(0, 0, 0, 0.1));
-}
-.bride{
-   display: inline-block;
-  padding: 12px 30px;
-  background: transparent;
-  color: #b89232;
-  border: 2px solid #b89232;
-  text-decoration: none;
-  border-radius: 40px;
-  font-size: 14px;
-  letter-spacing: 1px;
-  transition: all 0.3s ease;
-}
-.bride:hover{
-   background: #b89232;
-  color: white;
- 
-  
-}
-
-
 
 .bridal-section {
-  padding: 80px 40px;
+    padding: 80px 40px;
     border-top: 1px solid #e6dccf;
     border-bottom: 1px solid #e6dccf;
-  background: linear-gradient(180deg, #f4e7d3, #e9d5b5);
-
+    background: linear-gradient(180deg, #f4e7d3, #e9d5b5);
 }
 
 .bridal-section h1 {
-  font-size: 44px;
-  letter-spacing: 2px;
-  font-weight: 700;
-  color: #9e7e2a;
-  margin-bottom: 60px;
+    font-size: 44px;
+    letter-spacing: 2px;
+    font-weight: 700;
+    color: #9e7e2a;
+    margin-bottom: 60px;
 }
 
 .bridal-section .overlayy span {
-  color: #f3e7c8;
+    color: #f3e7c8;
 }
 
 .bridal-section .overlayy h3 {
-  color: #fff;
+    color: #fff;
 }
+
 .bridal-cards {
-  display: flex;
-  justify-content: center;
-  gap: 30px;
-  flex-wrap: wrap;
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    flex-wrap: wrap;
 }
 
 /* Card */
 .bridal-card {
-
-  border-radius: 20px;
-  position: relative;
-  width: 300px;
-  height: 450px;
-  overflow: hidden;
-  transition: all 0.35s ease;
-  border-radius: 12px;
-  /* Arch Shape */
-
-
-  border: 6px solid transparent;
-  background-image:
-    linear-gradient(#f6f1eb, #f6f1eb),
-    /* inner background */
-    linear-gradient(45deg, #736305, #684f04, #a8730f, #6f600b);
-  /* gold border */
-  background-origin: border-box;
-  background-clip: padding-box, border-box;
-
-  box-shadow:
-    0 10px 30px rgba(0, 0, 0, 0.15),
-    inset 0 0 0 1px rgba(255, 255, 255, 0.2);
+    border-radius: 20px;
+    position: relative;
+    width: 300px;
+    height: 450px;
+    overflow: hidden;
+    transition: all 0.35s ease;
+    border-radius: 12px;
+    border: 6px solid transparent;
+    background-image:
+        linear-gradient(#f6f1eb, #f6f1eb),
+        linear-gradient(45deg, #736305, #684f04, #a8730f, #6f600b);
+    background-origin: border-box;
+    background-clip: padding-box, border-box;
+    box-shadow:
+        0 10px 30px rgba(0, 0, 0, 0.15),
+        inset 0 0 0 1px rgba(255, 255, 255, 0.2);
 }
-
 
 /* Image */
 .bridal-card img {
-  border-radius: 1px;
-
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
+    border-radius: 1px;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
 }
 
 /* Gradient overlay */
 .bridal-card::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  border-radius: 12px;
-  border: 1px solid transparent;
-  transition: all 0.35s ease;
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: 12px;
+    border: 1px solid transparent;
+    transition: all 0.35s ease;
 }
 
 .bridal-card:hover::after {
-  border-color: rgba(201, 146, 28, 0.4);
+    border-color: rgba(201, 146, 28, 0.4);
 }
 
 /* Hover effect */
 .bridal-card:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.08);
+    transform: translateY(-6px);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.08);
 }
-
 
 /* SECTION */
 .collection-best {
-  padding: 60px 40px 80px;
-  background: #f8f6f2;
-  text-align: center;
+    padding: 60px 40px 80px;
+    background: #f8f6f2;
+    text-align: center;
 }
 
 .collection-best h1 {
-  font-family: "Playfair Display", serif;
-  font-size: 54px;
-  font-weight: 600;
-  color: #b8872b;
-  margin: 0 0 45px;
+    font-family: "Playfair Display", serif;
+    font-size: 54px;
+    font-weight: 600;
+    color: #b8872b;
+    margin: 0 0 45px;
 }
 
 .red-grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 32px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 32px;
 }
 
 .red-card {
-
-  border: 1px solid #b36f16;
-  border-radius: 20px;
-  overflow: hidden;
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  box-shadow: 0 10px 24px rgba(78, 54, 24, 0.08);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: 1px solid #b36f16;
+    border-radius: 20px;
+    overflow: hidden;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    box-shadow: 0 10px 24px rgba(78, 54, 24, 0.08);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .red-card:hover {
-  transform: translateY(-8px);
-  box-shadow: 0 18px 34px rgba(78, 54, 24, 0.14);
+    transform: translateY(-8px);
+    box-shadow: 0 18px 34px rgba(78, 54, 24, 0.14);
 }
 
 .red-image {
-  position: relative;
-  
-  overflow: hidden;
+    position: relative;
+    overflow: hidden;
 }
 
 .red-image img {
     width: 100%;
-  height: 320px;
-  object-fit: cover;
-  object-position: top;
-  border-radius: 20px 20px 0 0; /* only top corners */
-  transition: transform 0.35s ease;
+    height: 320px;
+    object-fit: cover;
+    object-position: top;
+    border-radius: 20px 20px 0 0;
+    transition: transform 0.35s ease;
 }
 
-.red-card:hover .collection-image img {
-  transform: scale(1.03);
+.red-card:hover .red-image img {
+    transform: scale(1.03);
 }
 
 .wishlist {
-  position: absolute;
-  top: 20px;
-  right: 20px;
-  width: 38px;
-  height: 38px;
-  border: none;
-  border-radius: 50%;
-  background: #fff;
-  color: #5b3a1a;
-  font-size: 16px;
-  cursor: pointer;
-  box-shadow: 0 5px 12px rgba(0, 0, 0, 0.12);
-  z-index: 2;
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    width: 38px;
+    height: 38px;
+    border: none;
+    border-radius: 50%;
+    background: #fff;
+    color: #5b3a1a;
+    font-size: 16px;
+    cursor: pointer;
+    box-shadow: 0 5px 12px rgba(0, 0, 0, 0.12);
+    z-index: 2;
 }
 
 .red-info {
-  padding: 16px 18px 20px;
-  text-align: center;
+    padding: 16px 18px 20px;
+    text-align: center;
 }
 
 .red-info h3 {
-  font-family: "Playfair Display", serif;
-  font-size: 17px;
-  font-weight: 600;
-  color: #3a2d1f;
-  margin: 0 0 10px;
-  line-height: 1.4;
+    font-family: "Playfair Display", serif;
+    font-size: 17px;
+    font-weight: 600;
+    color: #3a2d1f;
+    margin: 0 0 10px;
+    line-height: 1.4;
 }
 
 .price {
-  font-size: 20px;
-  font-weight: 700;
-  color: #b8872b;
-  margin: 0 0 16px;
+    font-size: 20px;
+    font-weight: 700;
+    color: #b8872b;
+    margin: 0 0 16px;
 }
 
 .buttons {
-  display: flex;
-  gap: 10px;
+    display: flex;
+    gap: 10px;
 }
 
 .cart,
 .buy {
-  flex: 1;
-  height: 42px;
-  border: none;
-  border-radius: 12px;
-  font-size: 15px;
-  cursor: pointer;
-  transition: 0.3s ease;
+    flex: 1;
+    height: 42px;
+    border: none;
+    border-radius: 12px;
+    font-size: 15px;
+    cursor: pointer;
+    transition: 0.3s ease;
 }
 
 .cart {
-  background: #000;
-  color: #fff;
+    background: #000;
+    color: #fff;
 }
 
 .cart:hover {
-  background: #1d1d1d;
+    background: #1d1d1d;
 }
 
 .buy {
-  background: #d1a246;
-  color: #fff;
+    background: #d1a246;
+    color: #fff;
 }
 
 .buy:hover {
-  background: #b9882d;
+    background: #b9882d;
 }
 
 @media (max-width: 1200px) {
-  .red-grid {
-    grid-template-columns: repeat(3, 1fr);
-  }
+    .red-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
 }
 
 @media (max-width: 900px) {
-  .collection-best {
-    padding: 50px 24px 70px;
-  }
+    .collection-best {
+        padding: 50px 24px 70px;
+    }
 
-  .collection-best h1 {
-    font-size: 42px;
-  }
+    .collection-best h1 {
+        font-size: 42px;
+    }
 
-  .red-grid {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 24px;
-  }
+    .red-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 24px;
+    }
 }
 
 @media (max-width: 600px) {
-  .collection-best {
-    padding: 40px 16px 60px;
-  }
+    .collection-best {
+        padding: 40px 16px 60px;
+    }
 
-  .collection-best h1 {
-    font-size: 32px;
-    margin-bottom: 30px;
-  }
+    .collection-best h1 {
+        font-size: 32px;
+        margin-bottom: 30px;
+    }
 
-  .red-grid {
-    grid-template-columns: 1fr;
-    gap: 20px;
-  }
+    .red-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
 
-  .red-image img {
-    height: 280px;
-  }
+    .red-image img {
+        height: 280px;
+    }
 
-  .red-info {
-    padding: 14px 14px 16px;
-  }
+    .red-info {
+        padding: 14px 14px 16px;
+    }
 
-  .red-info h3 {
+    .red-info h3 {
+        font-size: 16px;
+    }
+
+    .price {
+        font-size: 18px;
+    }
+
+    .buttons {
+        flex-direction: column;
+    }
+
+    .cart,
+    .buy {
+        height: 40px;
+        font-size: 14px;
+    }
+}
+
+.bridal-membership {
+    width: 100%;
+    padding: 60px 40px;
+    background: #f8f3ed;
+}
+
+.bridal-wrapper {
+    max-width: 1200px;
+    margin: auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 40px;
+    background: linear-gradient(135deg, #111, #1d1a17, #0f0f0f);
+    border-radius: 20px;
+    padding: 60px;
+    position: relative;
+    overflow: hidden;
+}
+
+.bridal-wrapper::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: repeating-linear-gradient(
+        120deg,
+        rgba(255,255,255,0.03) 0px,
+        rgba(255,255,255,0.03) 2px,
+        transparent 2px,
+        transparent 20px
+    );
+    pointer-events: none;
+}
+
+.bridal-left,
+.bridal-right {
+    position: relative;
+    z-index: 2;
+}
+
+.bridal-left {
+    flex: 1.4;
+}
+
+.bridal-left h2 {
+    font-size: 52px;
+    line-height: 1.1;
+    color: #fff;
+    margin-bottom: 35px;
+    font-family: "Playfair Display", serif;
+    max-width: 650px;
+}
+
+.bridal-benefit {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    background: rgba(198, 154, 108, 0.18);
+    border-radius: 18px;
+    padding: 20px 24px;
+    margin-bottom: 18px;
+    width: 75%;
+    backdrop-filter: blur(4px);
+    transition: 0.3s ease;
+}
+
+.bridal-benefit.active {
+    background: #d7af86;
+}
+
+.bridal-benefit .icon {
+    width: 55px;
+    height: 55px;
+    min-width: 55px;
+    border-radius: 50%;
+    background: #111;
+    color: #d7af86;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 26px;
+}
+
+.bridal-benefit .text h3 {
+    font-size: 20px;
+    margin-bottom: 6px;
+    color: #fff;
+    font-weight: 700;
+}
+
+.bridal-benefit.active .text h3,
+.bridal-benefit.active .text p {
+    color: #111;
+}
+
+.bridal-benefit .text p {
     font-size: 16px;
-  }
+    color: #e8d8c9;
+    margin: 0;
+}
 
-  .price {
-    font-size: 18px;
-  }
+.bridal-right {
+    flex: 0.9;
+    display: flex;
+    justify-content: center;
+}
 
-  .buttons {
+.bridall-card {
+    width: 320px;
+    background: #000;
+    border-radius: 18px;
+    padding: 40px 30px;
+    text-align: center;
+    color: #fff;
+    box-shadow: 0 10px 35px rgba(0,0,0,0.35);
+}
+
+.bridall-card h3 {
+    font-size: 24px;
+    margin: 0;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #fff;
+}
+
+.bridall-card h1 {
+    font-size: 70px;
+    line-height: 1;
+    margin: 10px 0 15px;
+    font-family: "Playfair Display", serif;
+    color: #fff;
+}
+
+.bridall-card .tagline {
+    font-size: 16px;
+    color: #d9c2a8;
+    margin-bottom: 30px;
+}
+
+.price-box {
+    display: flex;
     flex-direction: column;
-  }
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 18px;
+}
 
-  .cart,
-  .buy {
-    height: 40px;
+.old-price {
+    font-size: 42px;
+    color: #aaa;
+    text-decoration: line-through;
+}
+
+.new-price {
+    font-size: 58px;
+    font-weight: 700;
+    color: #fff;
+}
+
+.tax {
+    font-size: 16px;
+    color: #ddd;
+    margin-bottom: 18px;
+}
+
+.validity {
+    display: inline-block;
+    background: #fff;
+    color: #111;
+    padding: 10px 16px;
+    font-size: 15px;
+    border-radius: 4px;
+    font-weight: 600;
+}
+
+@media (max-width: 992px) {
+    .bridal-wrapper {
+        flex-direction: column;
+        padding: 40px 25px;
+    }
+
+    .bridal-left h2 {
+        font-size: 38px;
+        text-align: center;
+        margin: 0 auto 30px;
+    }
+
+    .bridal-benefit {
+        width: 100%;
+    }
+
+    .bridal-right {
+        width: 100%;
+    }
+}
+
+@media (max-width: 576px) {
+    .bridal-membership {
+        padding: 30px 15px;
+    }
+
+    .bridal-left h2 {
+        font-size: 30px;
+    }
+
+    .bridall-card {
+        width: 100%;
+    }
+
+    .bridall-card h1 {
+        font-size: 52px;
+    }
+
+    .new-price {
+        font-size: 42px;
+    }
+
+    .old-price {
+        font-size: 30px;
+    }
+}
+
+.bridal-promo {
+    max-width: 1200px;
+    margin: 50px auto;
+    padding: 28px 35px;
+    background: linear-gradient(135deg, #d8b38a, #c89a6d, #d9b894);
+    border-radius: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 30px;
+    overflow: hidden;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.08);
+}
+
+.bridal-promo-left {
+    display: flex;
+    align-items: center;
+    gap: 28px;
+    flex: 1;
+}
+
+.promo-card-stack {
+    position: relative;
+    width: 180px;
+    height: 110px;
+    flex-shrink: 0;
+}
+
+.promo-mini-card {
+    width: 160px;
+    height: 100px;
+    border-radius: 14px;
+    position: absolute;
+    box-shadow: 0 8px 18px rgba(0,0,0,0.15);
+}
+
+.card-back {
+    background: #7a4e2c;
+    left: 0;
+    top: 0;
+    transform: rotate(-12deg);
+    opacity: 0.9;
+}
+
+.card-front {
+    background: #5c3721;
+    right: 0;
+    bottom: 0;
+    color: #f7e7d3;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-left: 20px;
+}
+
+.card-front span {
     font-size: 14px;
-  }
+    letter-spacing: 2px;
+    font-weight: 600;
 }
 
-.bridal-journey {
-    
-    padding: 110px ;
-   
+.card-front p {
+    font-size: 26px;
+    margin: 6px 0 0;
+    font-family: "Playfair Display", serif;
+    font-weight: 700;
 }
-.journey-grid {
+
+.bridal-promo-text h2 {
+    font-size: 42px;
+    line-height: 1.1;
+    color: #fffaf5;
+    margin-bottom: 10px;
+    font-family: "Playfair Display", serif;
+    max-width: 650px;
+}
+
+.bridal-promo-text p {
+    font-size: 17px;
+    color: #fff5eb;
+    margin: 0;
+    max-width: 620px;
+    line-height: 1.6;
+}
+
+.bridal-promo-right {
+    flex-shrink: 0;
+}
+
+.bridal-promo-btn {
+    display: inline-block;
+    background: #6a4027;
+    color: #fff;
+    text-decoration: none;
+    padding: 15px 34px;
+    border-radius: 10px;
+    font-size: 15px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    transition: 0.3s ease;
+}
+
+.bridal-promo-btn:hover {
+    background: #4f2f1d;
+    transform: translateY(-2px);
+}
+.section-space{
+    padding: 80px 40px;
+}
+
+.section-heading.center{
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto 40px;
+}
+
+.section-label{
+    font-size: 12px;
+    letter-spacing: 4px;
+    color: #b89232;
+    font-weight: 600;
+    margin-bottom: 10px;
+    display: block;
+}
+
+.section-heading h2{
+    font-size: 44px;
+    color: #4e2e24;
+    font-family: "Playfair Display", serif;
+    margin-bottom: 10px;
+}
+
+.section-heading p{
+    font-size: 16px;
+    color: #7a6153;
+    line-height: 1.7;
+}
+
+/* BRIDAL COLLECTION */
+.bridal-collection{
+    background: #fffaf5;
+}
+
+.bridal-product-grid{
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    gap: 30px;
+    gap: 28px;
 }
 
-/* CARD */
-.journey-step {
-   background: linear-gradient(180deg, #fff8f3, #f3e7d8);
-    padding: 40px;
+.bridal-product-card{
+    background: #fff;
     border-radius: 18px;
-    border: 1px solid #e6dccf;
-    transition: 0.4s;
+    overflow: hidden;
+    box-shadow: 0 10px 24px rgba(0,0,0,0.08);
+    transition: 0.3s ease;
 }
 
-/* HOVER */
-.journey-step:hover {
-    transform: translateY(-8px);
-    border-color: #c89b3c;
-    box-shadow: 0 15px 30px rgba(0,0,0,0.08);
+.bridal-product-card:hover{
+    transform: translateY(-6px);
 }
 
-/* NUMBER */
-.journey-step span {
-    font-size: 36px;
-    color: #c89b3c;
-    font-weight: 600;
-    display: block;
-    margin-bottom: 15px;
+.bridal-product-image{
+    height: 340px;
+    overflow: hidden;
 }
 
-/* TITLE */
-.journey-step h3 {
-    color: #222;
+.bridal-product-image img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: top;
+    transition: 0.35s ease;
+}
+
+.bridal-product-card:hover .bridal-product-image img{
+    transform: scale(1.04);
+}
+
+.bridal-product-info{
+    padding: 18px;
+    text-align: center;
+}
+
+.bridal-product-info h3{
+    font-size: 18px;
+    line-height: 1.5;
+    color: #3f2a21;
+    margin-bottom: 10px;
+    font-family: "Playfair Display", serif;
+}
+
+.bridal-product-price{
+    font-size: 22px;
+    font-weight: 700;
+    color: #b8872b;
     margin-bottom: 12px;
 }
 
-/* TEXT */
-.journey-step p {
-    color: #666;
-    line-height: 1.6;
-}
-.bridal-guide {
-    padding: 110px;
-    background:  #f8f6f2;;
+.bridal-product-tags{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 8px;
+    margin-bottom: 14px;
 }
 
-.guide-grid {
+.bridal-product-tags span{
+    background: #f6eee4;
+    color: #7a5a42;
+    font-size: 12px;
+    padding: 6px 10px;
+    border-radius: 30px;
+}
+
+.bridal-product-btn{
+    display: inline-block;
+    padding: 12px 24px;
+    border-radius: 30px;
+    background: #111;
+    color: #fff;
+    text-decoration: none;
+    font-size: 14px;
+    transition: 0.3s ease;
+}
+
+.bridal-product-btn:hover{
+    background: #b8872b;
+}
+
+/* WHY RIWAAYAT */
+.why-riwaayat{
+    background: linear-gradient(180deg, #f8f1e7, #f3e4d0);
+}
+
+.why-grid{
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
+}
+
+.why-card{
+    background: rgba(255,255,255,0.65);
+    border: 1px solid #ead7bf;
+    border-radius: 20px;
+    padding: 28px 22px;
+    text-align: center;
+    transition: 0.3s ease;
+}
+
+.why-card:hover{
+    transform: translateY(-5px);
+    box-shadow: 0 10px 22px rgba(0,0,0,0.06);
+}
+
+.why-icon{
+    width: 58px;
+    height: 58px;
+    border-radius: 50%;
+    background: #b8872b;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 16px;
+    font-size: 24px;
+}
+
+.why-card h3{
+    font-size: 22px;
+    color: #4e2e24;
+    margin-bottom: 10px;
+    font-family: "Playfair Display", serif;
+}
+
+.why-card p{
+    font-size: 15px;
+    line-height: 1.7;
+    color: #6d5546;
+}
+
+/* TESTIMONIALS */
+.bridal-testimonials{
+    background: #fff;
+}
+
+.testimonial-grid{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+}
+
+.testimonial-card{
+    background: #fcf7f1;
+    border: 1px solid #efdfcb;
+    border-radius: 20px;
+    padding: 28px 24px;
+    text-align: center;
+}
+
+.quote-mark{
+    font-size: 56px;
+    line-height: 1;
+    color: #b8872b;
+    margin-bottom: 10px;
+    font-family: "Playfair Display", serif;
+}
+
+.testimonial-message{
+    font-size: 16px;
+    line-height: 1.8;
+    color: #644c3f;
+    margin-bottom: 16px;
+}
+
+.testimonial-card h4{
+    font-size: 18px;
+    color: #3f2a21;
+    margin-bottom: 6px;
+}
+
+.testimonial-card span{
+    font-size: 14px;
+    color: #9a7d67;
+}
+
+/* FAQ */
+.bridal-faq{
+    background: #f9f3eb;
+}
+
+.faq-wrap{
+    max-width: 1100px;
+    margin: 0 auto;
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: 40px;
+    gap: 20px;
 }
 
-.guide-item {
-    padding: 35px;
-    background: linear-gradient(180deg, #fff8f3, #f3e7d8);
-    border-radius: 16px;
-    border: 1px solid rgba(255,255,255,0.06);
-    transition: 0.4s;
+.faq-item{
+    background: #fff;
+    border: 1px solid #ead8c3;
+    border-radius: 18px;
+    padding: 24px;
 }
 
-.guide-item:hover {
-    transform: translateY(-6px);
-    border-color: #c89b3c;
+.faq-item h3{
+    font-size: 22px;
+    color: #4e2e24;
+    margin-bottom: 10px;
+    font-family: "Playfair Display", serif;
 }
 
-.guide-item h3 {
-    color: #c89b3c;
-    margin-bottom: 12px;
+.faq-item p{
+    font-size: 15px;
+    line-height: 1.7;
+    color: #6e5648;
 }
 
-.guide-item p {
-    color: #aaa;
-    line-height: 1.6;
+/* FINAL CTA */
+.bridal-final-cta{
+    padding: 90px 20px;
+    background: linear-gradient(135deg, #4e2e24, #7b4b39, #a56c54);
+    text-align: center;
+}
+
+.bridal-final-cta-inner{
+    max-width: 850px;
+    margin: 0 auto;
+}
+
+.section-label.light{
+    color: #f7ddbe;
+}
+
+.bridal-final-cta h2{
+    font-size: 46px;
+    line-height: 1.15;
+    color: #fff;
+    font-family: "Playfair Display", serif;
+    margin-bottom: 16px;
+}
+
+.bridal-final-cta p{
+    font-size: 17px;
+    line-height: 1.8;
+    color: #f6eee8;
+    margin-bottom: 24px;
+}
+
+.bridal-final-btn{
+    display: inline-block;
+    padding: 14px 32px;
+    background: #fff;
+    color: #5b3728;
+    border-radius: 40px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: 0.3s ease;
+}
+
+.bridal-final-btn:hover{
+    transform: translateY(-2px);
+}
+
+/* EMPTY */
+.empty-text{
+    text-align: center;
+    color: #7a6153;
+    font-size: 16px;
+}
+
+/* RESPONSIVE */
+@media (max-width: 1100px){
+    .bridal-product-grid,
+    .why-grid,
+    .testimonial-grid{
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .faq-wrap{
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 768px){
+    .section-space{
+        padding: 50px 18px;
+    }
+
+    .section-heading h2,
+    .bridal-final-cta h2{
+        font-size: 32px;
+    }
+
+    .bridal-product-grid,
+    .why-grid,
+    .testimonial-grid{
+        grid-template-columns: 1fr;
+    }
+
+    .bridal-product-image{
+        height: 300px;
+    }
+
+    .why-card,
+    .testimonial-card,
+    .faq-item{
+        padding: 20px;
+    }
+}
+/* responsive */
+@media (max-width: 900px) {
+    .bridal-promo {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 25px 20px;
+    }
+
+    .bridal-promo-left {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .bridal-promo-text h2 {
+        font-size: 30px;
+    }
+
+    .bridal-promo-text p {
+        font-size: 15px;
+    }
+}
+
+@media (max-width: 576px) {
+    .promo-card-stack {
+        width: 150px;
+        height: 95px;
+    }
+
+    .promo-mini-card {
+        width: 135px;
+        height: 85px;
+    }
+
+    .card-front p {
+        font-size: 22px;
+    }
+
+    .bridal-promo-text h2 {
+        font-size: 24px;
+    }
+
+    .bridal-promo-btn {
+        width: 100%;
+        text-align: center;
+    }
 }
 
 .craftsmanship {
@@ -640,6 +1460,5 @@
 }
 
 .craft-btn:hover {
-    background:#c89b3c; 
+    background: #c89b3c;
 }
-

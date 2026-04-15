@@ -1,107 +1,81 @@
+// ✅ Safe menu toggle
 const toggle = document.querySelector(".menu-toggle");
 const navLinks = document.querySelector(".nav-links");
 
-toggle.addEventListener("click", () => {
-  navLinks.classList.toggle("active");
-});
+if (toggle && navLinks) {
+    toggle.addEventListener("click", () => {
+        navLinks.classList.toggle("active");
+    });
+}
+
+// ✅ Testimonial slider
 const slides = document.querySelectorAll(".slide");
 const dotsContainer = document.querySelector(".dots");
 
-let index = 0;
+if (slides.length > 0 && dotsContainer) {
+    let index = 0;
 
-// create dots
-slides.forEach((_, i) => {
-    let dot = document.createElement("span");
-    dot.addEventListener("click", () => showSlide(i));
-    dotsContainer.appendChild(dot);
-});
+    slides.forEach((_, i) => {
+        let dot = document.createElement("span");
+        dot.addEventListener("click", () => showSlide(i));
+        dotsContainer.appendChild(dot);
+    });
 
-const dots = document.querySelectorAll(".dots span");
+    const dots = document.querySelectorAll(".dots span");
 
-function showSlide(i) {
-    slides.forEach(slide => slide.classList.remove("active"));
-    dots.forEach(dot => dot.classList.remove("active"));
+    function showSlide(i) {
+        slides.forEach(slide => slide.classList.remove("active"));
+        dots.forEach(dot => dot.classList.remove("active"));
+        slides[i].classList.add("active");
+        dots[i].classList.add("active");
+        index = i;
+    }
 
-    slides[i].classList.add("active");
-    dots[i].classList.add("active");
-    index = i;
+    function autoSlide() {
+        index++;
+        if (index >= slides.length) index = 0;
+        showSlide(index);
+    }
+
+    setInterval(autoSlide, 3000);
+    showSlide(0);
 }
-
-// auto slide
-function autoSlide() {
-    index++;
-    if (index >= slides.length) index = 0;
-    showSlide(index);
-}
-
-setInterval(autoSlide, 3000);
-
-// first load
-showSlide(0);
-
-let productSlides = [
-  "<?php echo $product['image']; ?>",
-  "<?php echo $product['image2']; ?>",
-  "<?php echo $product['image3']; ?>",
-  "<?php echo $product['video']; ?>"
-];
-
-let productIndex = 0;
-
-function showProductSlide(i) {
-  let el = document.getElementById("mainSlide");
-
-  if (productSlides[i].endsWith(".mp4")) {
-    el.outerHTML = `<video id="mainSlide" controls autoplay>
-      <source src="../videos/${productSlides[i]}" type="video/mp4">
-    </video>`;
-  } else {
-    el.outerHTML = `<img id="mainSlide" src="../images/${productSlides[i]}">`;
-  }
-}
-
-function nextSlide() {
-  productIndex = (productIndex + 1) % productSlides.length;
-  showProductSlide(productIndex);
-}
-
-function prevSlide() {
-  productIndex = (productIndex - 1 + productSlides.length) % productSlides.length;
-  showProductSlide(productIndex);
-}
-
+// wishlist
 document.addEventListener("DOMContentLoaded", function () {
-    document.querySelectorAll(".wishlist").forEach(function(button) {
-        button.addEventListener("click", function () {
-            let productId = this.getAttribute("data-id");
-            let btn = this;
 
-            fetch("add-wishlist.php", {
-                method: "POST",
+    document.querySelectorAll('.wishlist-btn').forEach(btn => {
+        btn.addEventListener('click', function(e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            let id = this.getAttribute('data-id');
+            let button = this;
+
+            fetch('../backend/add_to_wishlist.php', {
+                method: 'POST',
                 headers: {
-                    "Content-Type": "application/x-www-form-urlencoded"
+                    'Content-Type': 'application/x-www-form-urlencoded'
                 },
-                body: "id=" + encodeURIComponent(productId)
+                body: 'id=' + id
             })
-            .then(response => response.text())
+            .then(res => res.text())
             .then(data => {
-                if (data.trim() === "login") {
-                    window.location.href = "login.php";
-                } 
-                else if (data.trim() === "added") {
-                    btn.innerHTML = "♥";
-                    btn.classList.add("active");
-                } 
-                else if (data.trim() === "removed") {
-                    btn.innerHTML = "♡";
-                    btn.classList.remove("active");
-                } 
-                else {
-                    console.log(data);
+
+                if (data === 'login') {
+                    window.location.href = 'login.php';
+                }
+
+                if (data === 'added') {
+                    button.innerHTML = '♥';
+                    button.classList.add('active');
+                }
+
+                if (data === 'removed') {
+                    button.innerHTML = '♡';
+                    button.classList.remove('active');
                 }
             });
         });
     });
+
 });
-
-
