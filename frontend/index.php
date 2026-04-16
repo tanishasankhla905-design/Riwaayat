@@ -191,17 +191,16 @@ $links = [
             $isWishlisted = in_array($pid, $wishlistItems);
         ?>
         <div class="fagun-card">
-            <?php if (isset($_SESSION['user_id'])): ?>
-                <a href="../backend/add_to_wishlist.php?id=<?php echo $pid; ?>" class="wishlist <?php echo $isWishlisted ? 'active' : ''; ?>">
-                    <?php echo $isWishlisted ? '♥' : '♡'; ?>
-                </a>
-            <?php else: ?>
-                <a href="login.php?redirect=<?php echo urlencode('../backend/add_to_wishlist.php?id=' . $pid); ?>" class="wishlist">♡</a>
-            <?php endif; ?>
-
             <div class="fagun-img">
+                <button type="button"
+                    class="wishlist-btn <?php echo $isWishlisted ? 'active' : ''; ?>"
+                    data-id="<?php echo $pid; ?>">
+                    <?php echo $isWishlisted ? '♥' : '♡'; ?>
+                </button>
+
                 <a href="product.php?id=<?php echo $pid; ?>">
-                    <img src="<?php echo imagePath($row['image'] ?? ''); ?>" alt="<?php echo e($row['title'] ?? 'Product'); ?>">
+                    <img src="<?php echo imagePath($row['image'] ?? ''); ?>"
+                         alt="<?php echo e($row['title'] ?? 'Product'); ?>">
                 </a>
             </div>
 
@@ -240,17 +239,16 @@ $links = [
             $isWishlisted = in_array($pid, $wishlistItems);
         ?>
         <div class="fagun-card">
-            <?php if (isset($_SESSION['user_id'])): ?>
-                <a href="../backend/add_to_wishlist.php?id=<?php echo $pid; ?>" class="wishlist <?php echo $isWishlisted ? 'active' : ''; ?>">
-                    <?php echo $isWishlisted ? '♥' : '♡'; ?>
-                </a>
-            <?php else: ?>
-                <a href="login.php?redirect=<?php echo urlencode('../backend/add_to_wishlist.php?id=' . $pid); ?>" class="wishlist">♡</a>
-            <?php endif; ?>
-
             <div class="fagun-img">
+                <button type="button"
+                    class="wishlist-btn <?php echo $isWishlisted ? 'active' : ''; ?>"
+                    data-id="<?php echo $pid; ?>">
+                    <?php echo $isWishlisted ? '♥' : '♡'; ?>
+                </button>
+
                 <a href="product.php?id=<?php echo $pid; ?>">
-                    <img src="<?php echo imagePath($row['image'] ?? ''); ?>" alt="<?php echo e($row['title'] ?? 'Product'); ?>">
+                    <img src="<?php echo imagePath($row['image'] ?? ''); ?>"
+                         alt="<?php echo e($row['title'] ?? 'Product'); ?>">
                 </a>
             </div>
 
@@ -305,17 +303,16 @@ $links = [
             $isWishlisted = in_array($pid, $wishlistItems);
         ?>
         <div class="fagun-card">
-            <?php if (isset($_SESSION['user_id'])): ?>
-               <button class="wishlist-btn <?php echo $isWishlisted ? 'active' : ''; ?>" data-id="<?php echo $product['id']; ?>">
-    <?php echo $isWishlisted ? '♥' : '♡'; ?>
-</button>
-            <?php else: ?>
-                <a href="login.php?redirect=<?php echo urlencode('../backend/add_to_wishlist.php?id=' . $pid); ?>" class="wishlist">♡</a>
-            <?php endif; ?>
-
             <div class="fagun-img">
+                <button type="button"
+                    class="wishlist-btn <?php echo $isWishlisted ? 'active' : ''; ?>"
+                    data-id="<?php echo $pid; ?>">
+                    <?php echo $isWishlisted ? '♥' : '♡'; ?>
+                </button>
+
                 <a href="product.php?id=<?php echo $pid; ?>">
-                    <img src="<?php echo imagePath($row['image'] ?? ''); ?>" alt="<?php echo e($row['title'] ?? 'Product'); ?>">
+                    <img src="<?php echo imagePath($row['image'] ?? ''); ?>"
+                         alt="<?php echo e($row['title'] ?? 'Product'); ?>">
                 </a>
             </div>
 
@@ -458,46 +455,4 @@ $links = [
 
     <div class="dots"></div>
 </div>
-
-<footer class="footer">
-    <div class="footer-container">
-        <div class="footer-col">
-            <h2>Riwaayat</h2>
-            <p>Traditional Rajputi Poshak & Bridal Collection with modern elegance.</p>
-        </div>
-
-        <div class="footer-col">
-            <h3>Quick Links</h3>
-            <ul>
-                <li><a href="index.php">Home</a></li>
-                <li><a href="collection.php">Shop</a></li>
-                <li><a href="contact.php">Contact</a></li>
-            </ul>
-        </div>
-
-        <div class="footer-col">
-            <h3>Contact</h3>
-            <p>📍 Udaipur, Rajasthan</p>
-            <p>📞 +91 9876543210</p>
-            <p>✉️ info@riwaayat.com</p>
-        </div>
-
-        <div class="footer-col">
-            <h3>Follow Us</h3>
-            <div class="social">
-                <a href="#">🌐</a>
-                <a href="#">📘</a>
-                <a href="#">📸</a>
-                <a href="#">▶️</a>
-            </div>
-        </div>
-    </div>
-
-    <div class="footer-bottom">
-        <p>© 2026 Riwaayat. All Rights Reserved.</p>
-    </div>
-</footer>
-
-<script src="script.js"></script>
-</body>
-</html>
+<?php include "footer.php"; ?>

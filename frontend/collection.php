@@ -1,5 +1,6 @@
 <?php
 session_start();
+$user_id = isset($_SESSION['user_id']) ? (int)$_SESSION['user_id'] : 0;
 include '../db.php';
 
 $search   = isset($_GET['search'])    ? trim($_GET['search'])   : '';
@@ -10,8 +11,12 @@ $minPrice = isset($_GET['min_price']) ? (int)$_GET['min_price'] : 0;
 $maxPrice = isset($_GET['max_price']) ? (int)$_GET['max_price'] : 0;
 $sort     = isset($_GET['sort'])      ? trim($_GET['sort'])     : 'latest';
 
-$query = "SELECT * FROM products WHERE type='poshaks' AND 1=1";
-
+$query = "SELECT products.*, wishlist.id AS wish_id
+          FROM products
+          LEFT JOIN wishlist 
+          ON products.id = wishlist.product_id 
+          AND wishlist.user_id = '$user_id'
+          WHERE type='poshaks' AND 1=1";
 if ($search !== '') {
     $search = mysqli_real_escape_string($conn, $search);
     $query .= " AND title LIKE '%$search%'";
@@ -52,17 +57,7 @@ if (!$result || !$workTypes || !$categories || !$colors) {
     die("Query Error: " . mysqli_error($conn));
 }
 
-/* wishlist fetch once */
-$wishlistItems = [];
-if (isset($_SESSION['user_id'])) {
-    $uid = (int)$_SESSION['user_id'];
-    $wishQ = mysqli_query($conn, "SELECT product_id FROM wishlist WHERE user_id = $uid");
-    if ($wishQ) {
-        while ($w = mysqli_fetch_assoc($wishQ)) {
-            $wishlistItems[] = (int)$w['product_id'];
-        }
-    }
-}
+
 ?>
 <?php include "header.php"; ?>
 
@@ -328,32 +323,31 @@ a {
     transform: scale(1.05);
 }
 
-.wishlist {
+.wishlist-btn {
     position: absolute;
     top: 12px;
     right: 12px;
-    width: 36px;
-    height: 36px;
+    width: 38px;
+    height: 38px;
+    border: none;
     background: #fff;
+    color: #222;
+    font-size: 22px;
+    line-height: 38px;
+    text-align: center;
     border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-decoration: none;
-    font-size: 18px;
-    color: #b89232;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-    transition: 0.3s;
-    z-index: 2;
+    cursor: pointer;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+    transition: 0.3s ease;
+    z-index: 10;
 }
 
-.wishlist:hover {
-    transform: scale(1.1);
+.wishlist-btn:hover {
+    transform: scale(1.08);
 }
 
-.wishlist.active {
-    background: #fff !important;
-    color: red !important;
+.wishlist-btn.active {
+    color: red;
 }
 
 .fagun-info {
@@ -568,61 +562,47 @@ a {
                 </div>
             </div>
 
-            <?php if(mysqli_num_rows($result) > 0) { ?>
-            <div class="products-grid">
+         <?php if(mysqli_num_rows($result) > 0) { ?>
+<div class="products-grid">
 
-                <?php while($product = mysqli_fetch_assoc($result)) {
-                    $pid = (int)$product['id'];
-                    $isWishlisted = in_array($pid, $wishlistItems);
-                ?>
-                <div class="fagun-card">
+    <?php while ($product = mysqli_fetch_assoc($result)) { 
+        $productId = $product['id'];
+        $isWishlisted = !empty($product['wish_id']);
+    ?>
 
-    <div class="fagun-img">
+    <div class="fagun-card">
+        <div class="fagun-img">
 
-        <button class="wishlist-btn <?php echo $isWishlisted ? 'active' : ''; ?>" 
-                data-id="<?php echo $pid; ?>">
-        </button>
+            <button type="button"
+                class="wishlist-btn <?php echo $isWishlisted ? 'active' : ''; ?>"
+                data-id="<?php echo $productId; ?>">
+                <?php echo $isWishlisted ? '♥' : '♡'; ?>
+            </button>
 
-        <a href="product.php?id=<?php echo $pid; ?>">
-            <img src="../images/<?php echo htmlspecialchars($product['image']); ?>"
-                 alt="<?php echo htmlspecialchars($product['title']); ?>">
-        </a>
+            <a href="product.php?id=<?php echo $productId; ?>">
+                <img src="../images/<?php echo htmlspecialchars($product['image']); ?>"
+                     alt="<?php echo htmlspecialchars($product['title']); ?>">
+            </a>
 
-    </div>
+        </div>
 
-    <div class="fagun-info">
-        <h3><?php echo htmlspecialchars($product['title']); ?></h3>
-        <p class="price">₹<?php echo htmlspecialchars($product['price']); ?></p>
+        <div class="fagun-info">
+            <h3><?php echo htmlspecialchars($product['title']); ?></h3>
+            <p class="price">₹<?php echo htmlspecialchars($product['price']); ?></p>
 
-        <div class="fagun-btns">
-            <a href="cart.php?id=<?php echo $pid; ?>" class="add-cart">Add to Cart</a>
-            <a href="checkout.php?id=<?php echo $pid; ?>" class="buy-now">Buy Now</a>
+            <div class="fagun-btns">
+                <a href="cart.php?id=<?php echo $productId; ?>" class="add-cart">Add to Cart</a>
+                <a href="checkout.php?id=<?php echo $productId; ?>" class="buy-now">Buy Now</a>
+            </div>
         </div>
     </div>
+
+    <?php } ?>
 
 </div>
-                <?php } ?>
-
-            </div>
-            <?php } else { ?>
-            <div class="no-products">No products found for selected filters.</div>
-            <?php } ?>
-
-        </div>
-    </div>
+<?php } else { ?>
+    <div class="no-products">No products found for selected filters.</div>
+<?php } ?>
 </section>
 
-<script>
-const sortSelect = document.getElementById("sortSelect");
-const sortInput = document.getElementById("sortInput");
-const filterForm = document.getElementById("filterForm");
-
-sortSelect.addEventListener("change", function() {
-    sortInput.value = this.value;
-    filterForm.submit();
-});
-</script>
-
-</body>
-
-</html>
+<?php include "footer.php"; ?>

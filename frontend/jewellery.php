@@ -344,3 +344,4 @@ if ($catQuery) {
     <?php } ?>
   </div>
 </section>
+<?php include "footer.php"; ?>

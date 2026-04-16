@@ -487,6 +487,7 @@ if (!$featuredResult || !$spotlightResult || !$categoryResult || !$allResult) {
         <div class="empty">No sarees found.</div>
     <?php } ?>
 </section>
+<?php include "footer.php"; ?>
 
 </body>
 </html>

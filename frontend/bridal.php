@@ -326,5 +326,7 @@ $faqItems = [
         <a href="bridal.php" class="bridal-final-btn">Explore Bridal Collection</a>
     </div>
 </section>
+<?php include "footer.php"; ?>
+
 </body>
 </html>

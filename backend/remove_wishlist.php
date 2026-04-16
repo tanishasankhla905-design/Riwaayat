@@ -8,7 +8,7 @@ if (!isset($_SESSION['user_id'])) {
 }
 
 $user_id = (int) $_SESSION['user_id'];
-$product_id = isset($_GET['id']) ? (int) $_GET['id'] : 0;
+$product_id = isset($_POST['id']) ? (int) $_POST['id'] : 0;
 
 if ($product_id <= 0) {
     $redirect = isset($_SERVER['HTTP_REFERER']) ? $_SERVER['HTTP_REFERER'] : '../frontend/wishlist.php';

@@ -42,40 +42,54 @@ if (slides.length > 0 && dotsContainer) {
 }
 // wishlist
 document.addEventListener("DOMContentLoaded", function () {
+    const wishlistButtons = document.querySelectorAll(".wishlist-btn");
 
-    document.querySelectorAll('.wishlist-btn').forEach(btn => {
-        btn.addEventListener('click', function(e) {
+    wishlistButtons.forEach(button => {
+        button.addEventListener("click", function (e) {
             e.preventDefault();
-            e.stopPropagation();
 
-            let id = this.getAttribute('data-id');
-            let button = this;
+            const productId = this.getAttribute("data-id");
+            const currentBtn = this;
+            const wishlistCard = this.closest(".wishlist-card");
 
-            fetch('../backend/add_to_wishlist.php', {
-                method: 'POST',
+            fetch("../backend/add_to_wishlist.php", {
+                method: "POST",
                 headers: {
-                    'Content-Type': 'application/x-www-form-urlencoded'
+                    "Content-Type": "application/x-www-form-urlencoded"
                 },
-                body: 'id=' + id
+                body: "product_id=" + encodeURIComponent(productId)
             })
-            .then(res => res.text())
+            .then(response => response.text())
             .then(data => {
+                data = data.trim();
 
-                if (data === 'login') {
-                    window.location.href = 'login.php';
-                }
+                if (data === "login") {
+                    window.location.href = "login.php";
+                } 
+                else if (data === "added") {
+                    currentBtn.classList.add("active");
+                    currentBtn.innerHTML = "♥";
+                } 
+                else if (data === "removed") {
+                    if (wishlistCard) {
+                        wishlistCard.remove();
 
-                if (data === 'added') {
-                    button.innerHTML = '♥';
-                    button.classList.add('active');
+                        const grid = document.querySelector(".wishlist-grid");
+                        if (grid && grid.children.length === 0) {
+                            grid.innerHTML = '<div class="empty-msg">Your wishlist is empty.</div>';
+                        }
+                    } else {
+                        currentBtn.classList.remove("active");
+                        currentBtn.innerHTML = "♡";
+                    }
+                } 
+                else {
+                    console.log("Unexpected response:", data);
                 }
-
-                if (data === 'removed') {
-                    button.innerHTML = '♡';
-                    button.classList.remove('active');
-                }
+            })
+            .catch(error => {
+                console.log("Wishlist Error:", error);
             });
         });
     });
-
 });

@@ -9,6 +9,6 @@
 ">
     © <?php echo date('Y'); ?> Riwaayat Admin Panel
 </footer>
-
+<script src="script.js"></script>
 </body>
 </html>
